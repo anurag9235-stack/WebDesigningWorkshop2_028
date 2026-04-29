@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 5 - Employee Management</title>
+  <style>
+    body{font-family:Arial;background:#eef3f4;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}.container{background:white;width:650px;padding:30px;border-radius:12px;box-shadow:0 0 15px #aaa;text-align:center}input{display:block;margin:10px auto;padding:10px;width:260px}button{background:#18a558;color:white;border:0;padding:10px 15px;margin:6px;border-radius:5px;font-weight:bold;cursor:pointer}#output{text-align:left;margin-top:20px;font-size:18px;font-weight:bold}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Salary Management System</h1>
+    <input type="text" id="name" placeholder="Employee Name">
+    <input type="number" id="id" placeholder="Employee ID">
+    <input type="number" id="salary" placeholder="Salary">
+    <input type="text" id="department" placeholder="Department">
+    <button onclick="addEmployee()">Add Employee</button><br>
+    <button onclick="displayAll()">Display All</button>
+    <button onclick="filterSalary()">Salary &gt; 50000</button>
+    <button onclick="totalSalary()">Total Salary</button>
+    <button onclick="averageSalary()">Average Salary</button>
+    <button onclick="countDepartment()">Count by Department</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    let employees = [];
+    function addEmployee(){
+      let emp = {
+        name: document.getElementById('name').value,
+        id: document.getElementById('id').value,
+        salary: Number(document.getElementById('salary').value),
+        department: document.getElementById('department').value
+      };
+      if(!emp.name || !emp.id || !emp.salary || !emp.department){ alert('Fill all fields'); return; }
+      employees.push(emp); alert('Employee Added Successfully!');
+    }
+    function displayAll(){
+      let data = '<h3>All Employees</h3>';
+      employees.forEach(e => data += `Name: ${e.name} | ID: ${e.id} | Salary: ₹${e.salary} | Dept: ${e.department}<br>`);
+      document.getElementById('output').innerHTML = data;
+    }
+    function filterSalary(){
+      let high = employees.filter(e => e.salary > 50000);
+      let data = '<h3>Employees with Salary &gt; ₹50,000</h3>';
+      high.forEach(e => data += `${e.name} - ₹${e.salary}<br>`);
+      document.getElementById('output').innerHTML = data;
+    }
+    function totalSalary(){
+      let total = employees.reduce((sum,e)=>sum+e.salary,0);
+      document.getElementById('output').innerHTML = `Total Salary Payout: ₹${total}`;
+    }
+    function averageSalary(){
+      let total = employees.reduce((sum,e)=>sum+e.salary,0);
+      let avg = employees.length ? total / employees.length : 0;
+      document.getElementById('output').innerHTML = `Average Salary: ₹${avg.toFixed(2)}`;
+    }
+    function countDepartment(){
+      let dept = prompt('Enter Department Name:');
+      let count = employees.filter(e => e.department.toLowerCase() === dept.toLowerCase()).length;
+      document.getElementById('output').innerHTML = `Employees in ${dept}: ${count}`;
+    }
+  </script>
+</body>
+</html>
