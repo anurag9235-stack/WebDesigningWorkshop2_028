@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Experiment 6 - DOM Events</title>
   <style>
-    body{font-family:Arial;background:#eee;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}.box{background:white;width:650px;padding:35px;border-radius:12px;box-shadow:0 0 15px #aaa;text-align:center}input{padding:10px;width:300px;margin:10px}button{background:#0d8bf2;color:white;border:0;padding:10px 14px;margin:6px;border-radius:5px;cursor:pointer}p{font-size:18px}
+    body{font-family:Arial;background:#eee;display:flex;justify-content:center;
+      align-items:center;min-height:100vh;margin:0}.box{background:white;width:650px;
+        padding:35px;border-radius:12px;box-shadow:0 0 15px #aaa;text-align:center}input{padding:10px;
+        width:300px;margin:10px}button{background:#0d8bf2;color:white;border:0;padding:10px 14px;margin:6px;
+        border-radius:5px;cursor:pointer}p{font-size:18px}
   </style>
 </head>
 <body>
@@ -31,7 +35,8 @@
     document.getElementById('fontSize').addEventListener('click', function(){ para.style.fontSize = '26px'; });
     document.getElementById('togglePara').addEventListener('click', function(){ para.style.display = para.style.display === 'none' ? 'block' : 'none'; });
     document.getElementById('reset').addEventListener('click', function(){
-      heading.innerText = 'Welcome to JavaScript Lab'; para.innerText = 'This is a sample paragraph. JavaScript events can dynamically change content.'; para.style.display='block'; para.style.fontSize='18px'; document.body.style.backgroundColor='#eee'; document.getElementById('inputText').value='';
+      heading.innerText = 'Welcome to JavaScript Lab'; para.innerText = 'This is a sample paragraph. JavaScript events can dynamically change content.'; 
+      para.style.display='block'; para.style.fontSize='18px'; document.body.style.backgroundColor='#eee'; document.getElementById('inputText').value='';
     });
   </script>
 </body>
